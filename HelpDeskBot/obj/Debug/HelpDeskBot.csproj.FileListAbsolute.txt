@@ -1,0 +1,41 @@
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Bot Application.dll.config
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Bot Application.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Bot Application.pdb
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Autofac.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Chronic.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Microsoft.Bot.Builder.Autofac.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Microsoft.Bot.Builder.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Microsoft.Bot.Connector.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Microsoft.Rest.ClientRuntime.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Microsoft.WindowsAzure.Configuration.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Newtonsoft.Json.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\System.Net.Http.Formatting.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\System.Web.Http.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\System.Web.Http.WebHost.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Autofac.xml
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Microsoft.Bot.Builder.xml
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Microsoft.Bot.Builder.Autofac.xml
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Microsoft.Bot.Connector.xml
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Microsoft.WindowsAzure.Configuration.xml
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\Newtonsoft.Json.xml
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\System.Net.Http.Formatting.xml
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\System.Web.Http.xml
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\System.Web.Http.WebHost.xml
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\ar\Microsoft.Bot.Builder.resources.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\cs\Microsoft.Bot.Builder.resources.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\de-dE\Microsoft.Bot.Builder.resources.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\en\Microsoft.Bot.Builder.resources.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\es\Microsoft.Bot.Builder.resources.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\fa\Microsoft.Bot.Builder.resources.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\fr\Microsoft.Bot.Builder.resources.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\ja\Microsoft.Bot.Builder.resources.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\ru\Microsoft.Bot.Builder.resources.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\obj\Debug\HelpDeskBot.csprojResolveAssemblyReference.cache
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\obj\Debug\HelpDeskBot.csproj.CoreCompileInputs.cache
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\obj\Debug\Bot Application.dll
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\obj\Debug\Bot Application.pdb
