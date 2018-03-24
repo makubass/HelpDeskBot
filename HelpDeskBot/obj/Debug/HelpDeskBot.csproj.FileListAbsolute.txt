@@ -39,3 +39,4 @@ D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\obj\Debug
 D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\obj\Debug\HelpDeskBot.csproj.CoreCompileInputs.cache
 D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\obj\Debug\Bot Application.dll
 D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\obj\Debug\Bot Application.pdb
+D:\makub\Documents\Visual Studio 2017\Projects\HelpDeskBot\HelpDeskBot\bin\AdaptiveCards.dll
