@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
+using HelpDeskBot.Util;
 
 namespace HelpDeskBot.Dialogs
 {
@@ -71,16 +72,29 @@ namespace HelpDeskBot.Dialogs
         {
             var confirmed = await argument;
 
-            if(confirmed)
+            if (confirmed)
             {
-                await context.PostAsync("サポートチケットを発行しました。");
+                var api = new TicketAPIClient();
+                var ticketId = await api.PostTicketAsync
+                    (this.category, this.severity, this.description);
+                if (ticketId != -1)
+                {
+                    await context.PostAsync($"承知しました。チケットNo.{ticketId}"
+                        + "でサポートチケットを発行しました。");
+                }
+
+                else
+                {
+                    await context.PostAsync("サポートチケットの発行中に"
+                        + "エラーが発生しました。"
+                        + "恐れ入りますが、後ほど再度お試しください");
+                }
             }
             else
             {
                 await context.PostAsync("サポートチケットの発行を中止しました。"
-                    + "最初からやり直してください。");
+                    + "サポートチケット発行が必要な場合は再度やり直してください。");
             }
-
             context.Done<object>(null);
         }
 
