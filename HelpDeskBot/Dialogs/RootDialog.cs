@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using HelpDeskBot.Util;
+using System.Collections.Generic;
+using AdaptiveCards;
 
 namespace HelpDeskBot.Dialogs
 {
@@ -77,12 +79,20 @@ namespace HelpDeskBot.Dialogs
                 var api = new TicketAPIClient();
                 var ticketId = await api.PostTicketAsync
                     (this.category, this.severity, this.description);
+
                 if (ticketId != -1)
                 {
-                    await context.PostAsync($"承知しました。チケットNo.{ticketId}"
-                        + "でサポートチケットを発行しました。");
+                    var message = context.MakeMessage();
+                    message.Attachments = new List<Attachment>
+                    {
+                        new Attachment
+                        {
+                            ContentType = "application/vnd.microsoft.card.adaptive",
+                            Content = CreateCard(ticketId, this.category, this.severity, this.description)
+                        }
+                    };
+                    await context.PostAsync(message);            
                 }
-
                 else
                 {
                     await context.PostAsync("サポートチケットの発行中に"
@@ -103,6 +113,70 @@ namespace HelpDeskBot.Dialogs
             this.description = await argument;
             await context.PostAsync($"承知しました。内容は \"{this.description}\"ですね。");
             context.Done<object>(null);
+        }
+
+        private AdaptiveCard CreateCard(int ticketId, string category, string severity, string description)
+        {
+            AdaptiveCard card = new AdaptiveCard();
+
+            var headerBlock = new TextBlock()
+            {
+                Text = $"Ticket #{ticketId}",
+                Weight = TextWeight.Bolder,
+                Size = TextSize.Large,
+                Speak = $"承知しました。チケットNo. {ticketId} でサポートチケットを"
+                        + "発行しました。担当者からの連絡をお待ちください。"
+            };
+
+            var columnsBlock = new ColumnSet()
+            {
+                Separation = SeparationStyle.Strong,
+                Columns = new List<Column>
+                {
+                    new Column
+                    {
+                        Size = "1",
+                        Items = new List<CardElement>
+                        {
+                            new FactSet
+                            {
+                                Facts = new List<AdaptiveCards.Fact>
+                                {
+                                    new AdaptiveCards.Fact("Severity:", severity),
+                                    new AdaptiveCards.Fact("Category:", category),
+                                }
+                            }
+                        }
+                    },
+                    new Column
+                    {
+                        Size = "auto",
+                        Items = new List<CardElement>
+                        {
+                            new Image
+                            {
+                                Url =
+                                "https://raw.githubusercontent.com/GeekTrainer/help-desk-bot-lab/master/assets/botimages/head-smiling-medium.png",
+                                Size = ImageSize.Small,
+                                HorizontalAlignment = HorizontalAlignment.Right
+
+                            }
+                        }
+                    }
+                }
+            };
+
+            var descriptionBlock = new TextBlock
+            {
+                Text = description,
+                Wrap = true
+            };
+
+            card.Body.Add(headerBlock);
+            card.Body.Add(columnsBlock);
+            card.Body.Add(descriptionBlock);
+
+            return card;
         }
 
     }
