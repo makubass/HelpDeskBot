@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using AdaptiveCards;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
+using HelpDeskBot.Services;
+using HelpDeskBot.Model;
 
 namespace HelpDeskBot.Dialogs
 {
@@ -58,6 +60,47 @@ namespace HelpDeskBot.Dialogs
             this.description = result.Query;
 
             await this.EnsureTicket(context);
+        }
+
+        [LuisIntent("ExploreKnowledgeBase")]
+        public async Task ExploreCategory(IDialogContext context, LuisResult result)
+        {
+            EntityRecommendation categoryEntityRecommendation;
+            result.TryFindEntity("category", out categoryEntityRecommendation);
+            var category =
+                ((Newtonsoft.Json.Linq.JArray)categoryEntityRecommendation?
+                .Resolution["values"])?[0]?.ToString();
+
+            AzureSearchService searchService = new AzureSearchService();
+
+            if (string.IsNullOrWhiteSpace(category))
+            {
+                await context.PostAsync($"例えば「hardwareのKBを検索」" +
+                    "といった文章で入力してください");
+                context.Done<object>(null);
+            }
+            else
+            {
+                SearchResult searchResult
+                    = await searchService.SearchByCategory(category);
+                string message;
+                if (searchResult.Value.Length != 0)
+                {
+                    message = $"KBからは以下のような {category} カテゴリー"+
+                        "の記事が見つかりました。";
+                    foreach(var item in searchResult.Value)
+                    {
+                        message += $"\n * {item.Title}";
+                    }
+                }
+                else
+                {
+                    message = $"KBから{category} カテゴリーの記事は" +
+                        "見つかりませんでした。";
+                }
+                await context.PostAsync(message);
+                context.Done<object>(null);
+            }
         }
 
         private async Task EnsureTicket(IDialogContext context)
