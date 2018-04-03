@@ -70,37 +70,59 @@ namespace HelpDeskBot.Dialogs
             var category =
                 ((Newtonsoft.Json.Linq.JArray)categoryEntityRecommendation?
                 .Resolution["values"])?[0]?.ToString();
+            var originalText = result.Query;
 
             AzureSearchService searchService = new AzureSearchService();
-
             if (string.IsNullOrWhiteSpace(category))
             {
-                await context.PostAsync($"例えば「hardwareのKBを検索」" +
-                    "といった文章で入力してください");
-                context.Done<object>(null);
+                FacetResult facetResult = await searchService.FetchFacets();
+                if (facetResult.Facets.Category.Length != 0)
+                {
+                    List<string> categories = new List<string>();
+                    foreach (Category searchedCategory in facetResult.Facets.Category)
+                    {
+                        categories.Add($"{searchedCategory.Value}({ searchedCategory.Count})");
+                    }
+
+                    PromptDialog.Choice(context, this.AfterMenuSelection, categories,
+                        "お探しの答えがKBの中にあるか確認しましょう。" +
+                        "どのカテゴリーをご覧になりますか？");
+                }
             }
             else
             {
                 SearchResult searchResult
                     = await searchService.SearchByCategory(category);
-                string message;
+
                 if (searchResult.Value.Length != 0)
                 {
-                    message = $"KBからは以下のような {category} カテゴリー"+
-                        "の記事が見つかりました。";
-                    foreach(var item in searchResult.Value)
-                    {
-                        message += $"\n * {item.Title}";
-                    }
+                    await context.PostAsync($"{category} には以下のようなKBが" +
+                        "見つかりました。" +
+                        "**More details** をクリックすると詳細が表示されます。");
                 }
-                else
-                {
-                    message = $"KBから{category} カテゴリーの記事は" +
-                        "見つかりませんでした。";
-                }
-                await context.PostAsync(message);
+
+                await CardUtil.ShowSearchResults(context, searchResult,
+                    $"KBから{category} カテゴリーの記事は見つかりませんでした。");
+
                 context.Done<object>(null);
             }
+        }
+
+        public virtual async Task AfterMenuSelection(IDialogContext context, IAwaitable<string> result)
+        {
+            this.category = await result;
+            this.category = System.Text.RegularExpressions.Regex.Replace(this.category, @"\([^)]*\)", string.Empty);
+            AzureSearchService searchService = new AzureSearchService();
+
+            SearchResult searchResult
+                = await searchService.SearchByCategory(this.category);
+            await context.PostAsync($"{this.category}には以下のようなKBが" +
+                "見つかりました。" +
+                "**More details** をクリックすると詳細が表示されます。");
+            await CardUtil.ShowSearchResults(context, searchResult, $"KB から" +
+                "{this.category} カテゴリーの記事は見つかりませんでした。");
+
+            context.Done<object>(null);
         }
 
         private async Task EnsureTicket(IDialogContext context)

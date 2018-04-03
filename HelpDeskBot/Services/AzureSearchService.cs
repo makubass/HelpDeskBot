@@ -23,8 +23,8 @@
                 return JsonConvert.DeserializeObject<SearchResult>(response);
             }
         }
-        
-        public async Task<FacetResult>FetchFacets()
+
+        public async Task<FacetResult> FetchFacets()
         {
             using (var httpClient = new HttpClient())
             {
@@ -34,7 +34,7 @@
             }
         }
 
-        public async Task<SearchResult>SearchByTitle(string title)
+        public async Task<SearchResult> SearchByTitle(string title)
         {
             using (var httpClient = new HttpClient())
             {
@@ -44,7 +44,7 @@
             }
         }
 
-        public async Task<SearchResult>Search(string text)
+        public async Task<SearchResult> Search(string text)
         {
             using (var httpClient = new HttpClient())
             {
@@ -53,5 +53,7 @@
                 return JsonConvert.DeserializeObject<SearchResult>(response);
             }
         }
+
+
     }
 }

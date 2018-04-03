@@ -123,6 +123,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\Category.cs" />
     <Compile Include="Model\FacetResult.cs" />
     <Compile Include="Model\SearchFacets.cs" />
     <Compile Include="Model\SearchResult.cs" />
